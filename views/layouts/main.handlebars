@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8大你不可不知的迷奇林餐廳</title>
+  {{!-- link css files here   --}}
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  
+</head>
+<body>
+<header>
+  <!-- navigation -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container ">
+      <a class="navbar-brand" href="http://localhost:3000/">
+        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+          width="30" height="30" class="d-inline-block align-top" alt="8大你不可不知的迷奇林餐廳">
+        8大你不可不知的迷奇林餐廳
+      </a>
+      <a class="navbar-brand" href="http://localhost:3000/">
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </div>
+  </nav>
+
+  <div class="banner"></div>
+</header>
+
+  {{!-- partial templates will replace the part of "body here" --}}
+  {{{body}}}
+
+  {{!-- gotop button --}}
+  <button type="button" class="btn" id="goTop" ><i class="fa-solid fa-circle-up"></i></button>
+
+  {{!-- js --}}
+  <script src="/javascripts/popper.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+  <script src="https://kit.fontawesome.com/bc1699aa69.js" crossorigin="anonymous"></script>
+  <script src="/javascripts/gotop.js"></script>
+
+</body>
+</html>
