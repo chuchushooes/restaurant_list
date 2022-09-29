@@ -48,7 +48,7 @@ npm i express-handlebars@3.0.0
 npm install -g nodemon
 ```
 
-6. 執行專案，輸入以下至終端`nodemon app.js`成功後就會如下顯示
+6. 執行專案，輸入`nodemon app.js`至終端成功後就會如下顯示
 
 ```
 localhost:3000 has been active
