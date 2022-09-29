@@ -20,13 +20,33 @@
 
 1. 開啟終端機(terminal) clone 此專案
 2. 移動到此專案資料夾
-   `cd restaurant_list`
+
+```
+cd restaurant_list
+```
+
 3. 安裝 express 4.16.4 版本 - 為 node.js 網路框架
-   `npm i express@4.16.4`
+
+```
+npm i express@4.16.4
+```
+
 4. 安裝 express-handlebars 3.0.0 版本 - 為樣板引擎
-   `npm i express-handlebars@3.0.0`
+
+```
+npm i express-handlebars@3.0.0
+```
+
 5. 安裝 nodemon - 可自動偵測重啟伺服器
-   `npm install -g nodemon`
+
+```
+npm install -g nodemon
+```
+
 6. 執行專案，輸入以下至終端`nodemon app.js`成功後就會如下顯示
-   `localhost:3000 has been active`
+
+```
+localhost:3000 has been active
+```
+
 7. 至瀏覽器打上`http://localhost:3000/`畫面即可顯示
