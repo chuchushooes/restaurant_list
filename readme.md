@@ -16,7 +16,7 @@
 - [express 版本號@4.16.4](https://www.npmjs.com/package/express)
 - [express handlebars 版本號@3.0.0](https://www.npmjs.com/package/express-handlebars)
 
-## 安裝步驟 Install
+## 安裝步驟 - Install step
 
 1. 開啟終端機(terminal) clone 此專案
 
