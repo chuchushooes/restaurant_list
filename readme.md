@@ -2,6 +2,7 @@
 
 一個簡單的美食餐廳網站，可以點擊至你想要看的餐廳查看詳細資料，也可藉由搜尋來尋找自己想要的餐廳，趕快來用看看吧。
 ![image](https://github.com/chuchushooes/restaurant_list/blob/main/img/A1.png)
+![image](https://github.com/chuchushooes/restaurant_list/blob/main/img/A2.png)
 
 ## 功能列表 - Features
 
