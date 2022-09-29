@@ -19,16 +19,13 @@ app.listen(port, () => { //監聽終端執行完成後console
 
 // show main content
 app.get('/', (req, res) => {
-  // res.json(restaurantList)
   res.render('index',{restaurants: restaurantList.results})
   // 透過 res.render() 的第二個參數把 restaurantList.results陣列 傳到 index.handlebars 中，並可以透過 restaurants 這個變數取得
 })
 
 // show store data, use params
 app.get('/restaurants/:store_id', (req, res) => {
-  // console.log(req.params.store_id)
   const store = restaurantList.results.find((store) => store.id.toString() ===  req.params.store_id)
-  console.log(store)
   res.render('show',{store: store})
 })
 
