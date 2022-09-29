@@ -34,7 +34,7 @@ app.get('/restaurants/:store_id', (req, res) => {
 app.get('/search', (req, res) => {
   // console.log(req.query.keyword)
   const keyword = req.query.keyword
-  const storeSearch = restaurantList.results.filter((store) => store.name.toLowerCase().includes(keyword.toLowerCase().replace(/\s*/g, '')))
+  const storeSearch = restaurantList.results.filter((store) => store.name.toLowerCase().includes(keyword.toLowerCase().replace(/\s*/g, '')) || store.category.toLowerCase().includes(keyword.toLowerCase().replace(/\s*/g, '')))
 
   res.render('index',{restaurants: storeSearch, keyword: keyword}) // 參數導入篩選過後的陣列(物件)
 
