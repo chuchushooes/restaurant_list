@@ -1,4 +1,4 @@
-# 迷其林餐廳簡介 - Introduction
+# 迷奇林餐廳簡介 - Introduction
 
 一個簡單的美食餐廳網站，可以點擊至你想要看的餐廳查看詳細資料，也可藉由搜尋來尋找自己想要的餐廳，趕快來用看看吧。
 ![image](https://github.com/chuchushooes/restaurant_list/blob/main/img/A1.png)
@@ -7,7 +7,7 @@
 
 - 使用者可藉由搜尋列表進行餐廳名稱搜尋
 - 使用者可點擊任一餐廳，查看更多餐廳資訊，例如電話、地址、google map 導航等等
-- 使用者可利用導覽列回到迷其林主頁
+- 使用者可利用導覽列回到迷奇林主頁
 - 使用者當在頁面底層，可點擊箭頭按鈕移至最上層
 
 ## 環境建立與需求 - Set up environment
