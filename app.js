@@ -12,7 +12,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 // view engine, the template engine to use. For example, to use the Pug template engine: app.set('view engine', 'pug').
 app.set('view engine', 'handlebars')
 
-app.listen(port, () => { //監聽終端執行完成後console
+app.listen(port, () => { // 監聽終端執行完成後console
   console.log(`localhost:${port} has been active`)
 })
 
@@ -34,9 +34,15 @@ app.get('/restaurants/:store_id', (req, res) => {
 app.get('/search', (req, res) => {
   // console.log(req.query.keyword)
   const keyword = req.query.keyword
-  const storeSearch = restaurantList.results.filter((store) => store.name.toLowerCase().includes(keyword.toLowerCase().replace(/\s*/g, '')) || store.category.toLowerCase().includes(keyword.toLowerCase().replace(/\s*/g, '')))
+  const keyword_trim = keyword.toLowerCase().trim()
+  const storeSearch = restaurantList.results.filter((store) => 
+  store.name.toLowerCase().includes(keyword_trim) || 
+  store.category.toLowerCase().includes(keyword_trim))
 
-  res.render('index',{restaurants: storeSearch, keyword: keyword}) // 參數導入篩選過後的陣列(物件)
+  // 加入搜尋不到的條件
+  const notFound = !storeSearch.length
+
+  res.render('index',{restaurants: storeSearch, keyword: keyword, notFound: notFound}) // 參數導入篩選過後的陣列(物件)
 
 })
 

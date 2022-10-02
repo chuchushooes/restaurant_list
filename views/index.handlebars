@@ -16,7 +16,14 @@
   </div>
 </div>
 
-<!-- restaurant list -->
+{{!-- notFound Search--}}
+{{#if notFound}}
+<div class="container mt-5">
+<h1>您搜尋的 {{keyword}} 找不到，請重新搜尋</h1>
+</div>
+
+{{else}}
+{{!-- restaurant list --}}
 <div class="container mt-5">
   <div class="row">
     {{#each restaurants}}
@@ -44,3 +51,4 @@
     {{/each}}
   </div>
 </div>
+{{/if}}
