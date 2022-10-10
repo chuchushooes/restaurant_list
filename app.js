@@ -4,6 +4,10 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const restaurantList = require("./restaurant.json") //導入restaurant json
 
+// 導入 mongoose
+const mongoose = require('mongoose')
+mongoose.connect(`${process.env.MONGODB_URI_restaurant}`)
+
 
 app.use(express.static('public'))
 // 定義靜態檔資料夾，告訴express名稱位置
@@ -16,6 +20,17 @@ app.listen(port, () => { // 監聽終端執行完成後console
   console.log(`localhost:${port} has been active`)
 })
 
+
+// db設置
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('mongodb error!')
+})
+
+db.once('open', () => {
+  console.log('mongodb connected!')
+})
 
 // show main content
 app.get('/', (req, res) => {
