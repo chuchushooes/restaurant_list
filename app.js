@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const port = 3000
 const exphbs = require('express-handlebars')
 const restaurantList = require("./restaurant.json") //導入restaurant json
@@ -7,12 +8,17 @@ const restaurantList = require("./restaurant.json") //導入restaurant json
 // 導入 mongoose
 const mongoose = require('mongoose')
 mongoose.connect(`${process.env.MONGODB_URI_restaurant}`)
+// 導入 rest model
+const Restaurant = require('./models/restaurants')
 
+
+app.use(express.urlencoded({extended: true}))
 
 app.use(express.static('public'))
 // 定義靜態檔資料夾，告訴express名稱位置
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}))
+// 記得家engine(新版)
+app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}))
 // view engine, the template engine to use. For example, to use the Pug template engine: app.set('view engine', 'pug').
 app.set('view engine', 'handlebars')
 
@@ -34,15 +40,22 @@ db.once('open', () => {
 
 // show main content
 app.get('/', (req, res) => {
-  res.render('index',{restaurants: restaurantList.results})
-  // 透過 res.render() 的第二個參數把 restaurantList.results陣列 傳到 index.handlebars 中，並可以透過 restaurants 這個變數取得
+  Restaurant.find()
+    .lean()
+    .then(restaurants =>  res.render('index', { restaurants }))
+    .catch(error => console.log(error))
 })
 
 // show store data, use params
-app.get('/restaurants/:store_id', (req, res) => {
-  const store = restaurantList.results.find((store) => store.id.toString() ===  req.params.store_id)
-  res.render('show',{store: store})
+app.get('/restaurants/:id', (req, res) => {
+  const id  = req.params.id
+  // console.log(id)
+  return Restaurant.findById(id) // 找到id後回傳資料
+  .lean()
+  .then(store => res.render('show',{ store }))
+  .catch(error => console.log(error))
 })
+  
 
 
 // show Query String, use query
