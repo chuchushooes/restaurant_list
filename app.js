@@ -46,6 +46,11 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// show add new store page
+app.get('/restaurants/newPage', (req, res) => {
+  return res.render('newPage')
+})
+
 // show store data page, use params
 app.get('/restaurants/:id', (req, res) => {
   const id  = req.params.id
@@ -67,9 +72,11 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 
-// show add new store page
-app.get('/restaurants/new', (req, res) => {
-  return res.render('new')
+// create new data
+app.post('/restaurants', (req, res) => {
+   Restaurant.create(req.body)
+  .then(() => res.redirect(`/`))
+  .catch(error => console.log(error))
 })
 
 
