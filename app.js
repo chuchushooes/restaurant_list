@@ -54,11 +54,10 @@ app.get('/restaurants/newPage', (req, res) => {
 // show store data page, use params
 app.get('/restaurants/:id', (req, res) => {
   const id  = req.params.id
-  // console.log(id)
   return Restaurant.findById(id) // 找到id後回傳資料
-  .lean()
-  .then(store => res.render('show',{ store }))
-  .catch(error => console.log(error))
+    .lean()
+    .then(store => res.render('show',{ store }))
+    .catch(error => console.log(error))
 })
 
 
@@ -66,17 +65,17 @@ app.get('/restaurants/:id', (req, res) => {
 app.get('/restaurants/:id/edit', (req, res) => {
   const id  = req.params.id
   return Restaurant.findById(id) // 找到id後回傳資料
-  .lean()
-  .then(store => res.render('edit',{ store }))
-  .catch(error => console.log(error))
+    .lean()
+    .then(store => res.render('edit',{ store }))
+    .catch(error => console.log(error))
 })
 
 
 // create new data
 app.post('/restaurants', (req, res) => {
    Restaurant.create(req.body)
-  .then(() => res.redirect(`/`))
-  .catch(error => console.log(error))
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
 })
 
 
@@ -86,21 +85,33 @@ app.post('/restaurants/:id/edit', (req, res) => {
   const body = req.body
   //  return Restaurant.findByIdAndUpdate(id, req.body) 精簡用法
   return Restaurant.findById(id)
-  .then(store => {
-    store.name = body.name
-    store.name_en = body.name_en
-    store.category = body.category
-    store.image = body.image
-    store.location = body.location
-    store.phone = body.phone
-    store.google_map = body.google_map
-    store.embed_map = body.embed_map
-    store.rating = body.rating
-    store.description = body.description
-    return store.save()
-  })
-  .then(() => res.redirect(`/restaurants/${id}`))
-  .catch(error => console.log(error))
+    .then(store => {
+      store.name = body.name
+      store.name_en = body.name_en
+      store.category = body.category
+      store.image = body.image
+      store.location = body.location
+      store.phone = body.phone
+      store.google_map = body.google_map
+      store.embed_map = body.embed_map
+      store.rating = body.rating
+      store.description = body.description
+      return store.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
+
+
+
+// delete store data
+app.post('/restaurants/:id/delete', (req, res) => {
+  const id  = req.params.id
+  //  return Restaurant.findByIdAndDelete(id) 精簡用法
+  return Restaurant.findById(id)
+    .then(store => store.remove())  
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
 })
 
 // show Query String, use query
