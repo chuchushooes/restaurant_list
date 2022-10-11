@@ -1,0 +1,77 @@
+<div class="container-edit container-sm">
+  <h2>新增餐廳</h2>
+  <div class="row justify-content-center">
+    <div class="col-sm-12">
+      <form action="/restaurants" method="POST">
+
+        <div class="mb-2">
+          <label for="name" class="form-label">餐廳名稱</label><input type="text" class="form-control" name="name"
+             required />
+        </div>
+
+        <div class="mb-2">
+          <label for="name_en" class="form-label">餐廳英文名稱</label><input type="text" class="form-control" name="name_en"
+             required />
+        </div>
+
+        <div class="mb-2">
+          <label for="category" class="form-label">餐廳種類</label><input type="text" list="category" class="form-control"
+            name="category"  required />
+          <datalist id="category">
+            <option>酒吧</option>
+            <option>日本料理</option>
+            <option>中東料理</option>
+            <option>義式餐廳</option>
+            <option>咖啡</option>
+          </datalist>
+        </div>
+
+
+        <div class="mb-2">
+          <label for="image" class="form-label">餐廳圖片路徑</label><input type="url" class="form-control" name="image"
+             required />
+        </div>
+
+        <div class="mb-2">
+          <label for="location" class="form-label">餐廳地址</label><input type="text" class="form-control" name="location"
+             required />
+        </div>
+
+
+        <div class="mb-2">
+          <label for="phone" class="form-label">餐廳電話</label><input type="text" class="form-control" name="phone"
+             required />
+        </div>
+
+
+        <div class="mb-2" class="form-label">
+          <label for="google_map">餐廳Google Map連結</label><textarea type="url" class="form-control" name="google_map"
+            required /></textarea>
+        </div>
+
+
+        <div class="mb-2" class="form-label">
+          <label for="embed_map">餐廳Google Map崁入連結</label><textarea type="url" class="form-control" name="embed_map"
+            required /></textarea>
+        </div>
+
+
+        <div class="mb-2" class="form-label">
+          <label for="rating">餐廳分數</label><input type="number" name="rating" class="form-control" min="0" max="5"
+            step="0.1"  required />
+        </div>
+
+
+        <div class="mb-2" class="form-label"></div>
+        <label for="description">餐廳描述</label><textarea type="text" class="form-control" name="description" rows="5"
+          required />  </textarea>
+
+
+        <div class="mb-2 mt-2">
+          <button type="submit" class="btn-color btn-sm">Save 儲存資料</button>
+          <a href="/"><button class="btn-color btn-sm">Back 回首頁</button></a>
+        </div>
+
+      </form>
+    </div>
+  </div>
