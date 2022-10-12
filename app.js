@@ -117,7 +117,6 @@ app.post('/restaurants/:id/delete', (req, res) => {
 // show Query String, use query
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const keyword_trim = keyword.toLowerCase().trim()
 
   // MongoDB 可使用正則表達式(regex) 執行字串模式匹配的查詢
   // 這裡利用 $or 是 find 內的第一個參數 Query，條件是讓name和category都能符合搜尋條件
