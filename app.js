@@ -116,11 +116,10 @@ app.post('/restaurants/:id/delete', (req, res) => {
 
 // show Query String, use query
 app.get('/search', (req, res) => {
-  // console.log(req.query.keyword)
   const keyword = req.query.keyword
   const keyword_trim = keyword.toLowerCase().trim()
 
-  Restaurant.find()
+  Restaurant.find() //撈出全部restaurants的陣列資料
     .lean()
     .then(restaurants => {
       const storeSearch = restaurants.filter(
