@@ -17,7 +17,7 @@ db.once('open', () => {
    for(let i = 0; i < stores.length; i++) { // 避免使用 magic number(缺乏意義的數值)
   restaurant.create(
       {
-       name: stores[i].name},
+       name: stores[i].name,
        name_en: stores[i].name_en,
        category: stores[i].category,
        image: stores[i].image,
