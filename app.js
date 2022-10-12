@@ -119,15 +119,19 @@ app.get('/search', (req, res) => {
   // console.log(req.query.keyword)
   const keyword = req.query.keyword
   const keyword_trim = keyword.toLowerCase().trim()
-  const storeSearch = restaurantList.results.filter((store) => 
-  store.name.toLowerCase().includes(keyword_trim) || 
-  store.category.toLowerCase().includes(keyword_trim))
 
-  // 加入搜尋不到的條件
-  const notFound = !storeSearch.length
+  Restaurant.find()
+    .lean()
+    .then(restaurants => {
+      const storeSearch = restaurants.filter(
+        (store) => 
+          store.name.toLowerCase().includes(keyword_trim) || 
+          store.category.toLowerCase().includes(keyword_trim))
 
-  res.render('index',{restaurants: storeSearch, keyword: keyword, notFound: notFound}) // 參數導入篩選過後的陣列(物件)
-
+      const notFound = !storeSearch.length // 加入搜尋不到的條件
+      res.render('index',{restaurants: storeSearch, keyword, notFound}) // 參數導入篩選過後的陣列(物件)
+    })
+    .catch(error => console.log(error))
 })
 
 

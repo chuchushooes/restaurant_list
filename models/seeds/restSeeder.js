@@ -14,19 +14,19 @@ db.on('error', () => {
 
 db.once('open', () => {
   console.log('mongodb connected!')
-   for(let i = 0; i < 8; i++) {
+   for(let i = 0; i < stores.length; i++) { // 避免使用 magic number(缺乏意義的數值)
   restaurant.create(
       {
-       name: `${stores[i].name}`,
-       name_en: `${stores[i].name_en}`,
-       category: `${stores[i].category}`,
-       image: `${stores[i].image}`,
-       location: `${stores[i].location}`,
-       phone: `${stores[i].phone}`,
-       google_map: `${stores[i].google_map}`,
-       embed_map: `${stores[i].embed_map}`,
-       rating: `${stores[i].rating}`,
-       description: `${stores[i].description}`,
+       name: stores[i].name},
+       name_en: stores[i].name_en,
+       category: stores[i].category,
+       image: stores[i].image,
+       location:{stores[i].location,
+       phone: stores[i].phone,
+       google_map: stores[i].google_map,
+       embed_map: stores[i].embed_map,
+       rating: stores[i].rating},
+       description: stores[i].description,
       }
     )
   }
