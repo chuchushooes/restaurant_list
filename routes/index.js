@@ -10,5 +10,4 @@ router.use('/', home)
 router.use('/restaurants', restaurants)
 router.use('/search', searchBar)
 
-
-module.exports = router // 匯出express.Router
+module.exports = router// 匯出express.Router

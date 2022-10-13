@@ -42,21 +42,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   const id  = req.params.id
   const body = req.body
-  //  return Restaurant.findByIdAndUpdate(id, req.body) 精簡用法
-  return Restaurant.findById(id)
-    .then(store => {
-      store.name = body.name
-      store.name_en = body.name_en
-      store.category = body.category
-      store.image = body.image
-      store.location = body.location
-      store.phone = body.phone
-      store.google_map = body.google_map
-      store.embed_map = body.embed_map
-      store.rating = body.rating
-      store.description = body.description
-      return store.save()
-    })
+  return Restaurant.findByIdAndUpdate(id, req.body)
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
@@ -66,9 +52,7 @@ router.put('/:id', (req, res) => {
 // delete store data
 router.delete('/:id', (req, res) => {
   const id  = req.params.id
-  //  return Restaurant.findByIdAndDelete(id) 精簡用法
-  return Restaurant.findById(id)
-    .then(store => store.remove())  
+  return Restaurant.findByIdAndDelete(id) 
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
