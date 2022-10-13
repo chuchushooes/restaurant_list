@@ -48,7 +48,7 @@
         <div class="m-2 d-flex justify-content-end flex-wrap">
           <a href="/restaurants/{{this._id}}/edit" class="m-2 text-secondary">Edit</a>
           <a href="/restaurants/{{this._id}}" class="m-2 detail text-secondary">Detail</a>
-          <form action="/restaurants/{{this._id}}/delete" method="POST" style="display: inline">
+          <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST" style="display: inline">
             <button type="submit" class="btn-color btn-sm">Delete</button>
           </form>
         </div>
