@@ -16,4 +16,3 @@ app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))// 記得加en
 app.set('view engine', 'handlebars')
 
 app.listen(port, () => { console.log(`localhost:${port} has been active`) })
-// 監聽終端執行完成後console

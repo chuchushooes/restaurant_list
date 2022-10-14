@@ -3,7 +3,8 @@
 const express = require('express')
 const router = express.Router()
 // 導入 rest model
-const Restaurant = require('../../models/restaurants')
+const Restaurant = require('../../models/restaurants');
+const sortSelector = require('../../utilities/sortSelector');
 
 // show Query String, use query
 router.get('/', (req, res) => {
@@ -19,12 +20,21 @@ router.get('/', (req, res) => {
   ]})
   .lean()
   .then(restaurants => {
-    const notFound = !restaurants.length // 加入搜尋不到的條件
-    res.render('index',{restaurants, keyword, notFound}) // 參數導入篩選過後的陣列(物件)
+    const notFound = !restaurants.length 
+    res.render('index',{restaurants, keyword, notFound})
   })
 
 });
 
+router.get('/sort', (req, res) => {
+  const sortValue = req.query.sortValue
+  Restaurant.find()
+    .sort(sortSelector(sortValue))// index內傳過來的sortValue帶入sortSelector function
+    .lean()
+    .then(restaurants =>  res.render('index', { restaurants }))
+    .catch(error => console.log(error))
+})
 
 
-module.exports = router // 匯出express.Router
+
+module.exports = router
